@@ -132,9 +132,9 @@ class ProposalController extends Controller
         $proposal->delete();
 
         if ($proposal) {
-            return to_route('prop.index')->with('success', 'Proposal Telah Dihapus');
+            return redirect()->route('prop.index')->with('success', 'Proposal Telah Dihapus');
         } else {
-            return to_route('prop.index')->with('failed', 'Proposal Gagal Dihapus');
+            return redirect()->route('prop.index')->with('failed', 'Proposal Gagal Dihapus');
         }
     }
 }

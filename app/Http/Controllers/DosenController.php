@@ -42,9 +42,9 @@ class DosenController extends Controller
         $dosen = Dosen::create($validateData);
 
         if ($dosen) {
-            return to_route('dosen.view')->with('success', 'Dosen Telah Ditambahkan');
+            return redirect()->route('dosen.view')->with('success', 'Dosen Telah Ditambahkan');
         } else {
-            return to_route('dosen.view')->with('failed', 'Dosen Gagal Ditambahkan');
+            return redirect()->route('dosen.view')->with('failed', 'Dosen Gagal Ditambahkan');
         }
     }
 
@@ -80,9 +80,11 @@ class DosenController extends Controller
 
         $dosen->update($validateData);
 
-        return $dosen
-            ? to_route('dosen.view')->with('success', 'Dosen Berhasil Diubah')
-            : to_route('dosen.view')->with('failed', 'Dosen Gagal Diubah');
+        if ($dosen) {
+            return redirect()->route('dosen.view')->with('success', 'Dosen Berhasil Diubah');
+        } else {
+            return redirect()->route('dosen.view')->with('failed', 'Dosen Gagal Diubah');
+        }
     }
 
     /**
@@ -93,9 +95,9 @@ class DosenController extends Controller
         $dosen->delete();
 
         if ($dosen) {
-            return to_route('dosen.view')->with('success', 'Dosen Telah Dihapus');
+            return redirect()->route('dosen.view')->with('success', 'Dosen Telah Dihapus');
         } else {
-            return to_route('dosen.view')->with('failed', 'Dosen Gagal Dihapus');
+            return redirect()->route('dosen.view')->with('failed', 'Dosen Gagal Dihapus');
         }
     }
 }

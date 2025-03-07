@@ -44,9 +44,9 @@ class MahasiswaController extends Controller
         $mahasiswa = Mahasiswa::create($validateData);
 
         if ($mahasiswa) {
-            return to_route('mahasiswa.view')->with('success', 'Mahasiswa Telah Ditambahkan');
+            return redirect()->route('mahasiswa.view')->with('success', 'Mahasiswa Telah Ditambahkan');
         } else {
-            return to_route('mahasiswa.view')->with('failed', 'Mahasiswa Gagal Ditambahkan');
+            return redirect()->route('mahasiswa.view')->with('failed', 'Mahasiswa Gagal Ditambahkan');
         }
     }
 
@@ -84,9 +84,11 @@ class MahasiswaController extends Controller
 
         $mahasiswa->update($validateData);
 
-        return $mahasiswa
-            ? to_route('mahasiswa.view')->with('success', 'Mahasiswa Berhasil Diubah')
-            : to_route('mahasiswa.view')->with('failed', 'Mahasiswa Gagal Diubah');
+        if ($mahasiswa) {
+            return redirect()->route('mahasiswa.view')->with('success', 'Mahasiswa Berhasil Diubah');
+        } else {
+            return redirect()->route('mahasiswa.view')->with('failed', 'Mahasiswa Gagal Diubah');
+        }
     }
 
     /**
@@ -97,9 +99,9 @@ class MahasiswaController extends Controller
         $mahasiswa->delete();
 
         if ($mahasiswa) {
-            return to_route('mahasiswa.view')->with('success', 'Mahasiswa Telah Dihapus');
+            return redirect()->route('mahasiswa.view')->with('success', 'Mahasiswa Telah Dihapus');
         } else {
-            return to_route('mahasiswa.view')->with('failed', 'Mahasiswa Gagal Dihapus');
+            return redirect()->route('mahasiswa.view')->with('failed', 'Mahasiswa Gagal Dihapus');
         }
     }
 }

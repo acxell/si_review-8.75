@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\ProposalController;
 use Illuminate\Support\Facades\Route;
 
@@ -35,3 +36,11 @@ Route::get('/proposals/detai/{proposal}', [ProposalController::class, 'show'])->
 Route::get('/proposals/{proposal}', [ProposalController::class, 'edit'])->name('prop.edit');
 Route::put('/proposals/{proposal}', [ProposalController::class, 'update'])->name('prop.update');
 Route::delete('/proposals/{proposal}', [ProposalController::class, 'destroy'])->name('prop.destroy');
+
+Route::get('/pengumumans', [PengumumanController::class, 'index'])->name('pengumuman.index');
+Route::get('/pengumumans/create', [PengumumanController::class, 'create'])->name('pengumuman.create');
+Route::post('/pengumumans', [PengumumanController::class, 'store'])->name('pengumuman.store');
+Route::get('/pengumumans/detai/{[pengumuman]}', [PengumumanController::class, 'show'])->name('pengumuman.detail');
+Route::get('/pengumumans/{[pengumuman]}', [PengumumanController::class, 'edit'])->name('pengumuman.edit');
+Route::put('/pengumumans/{[pengumuman]}', [PengumumanController::class, 'update'])->name('pengumuman.update');
+Route::delete('/pengumumans/{[pengumuman]}', [PengumumanController::class, 'destroy'])->name('pengumuman.destroy');
