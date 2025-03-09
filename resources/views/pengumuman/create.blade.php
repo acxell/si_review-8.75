@@ -61,7 +61,7 @@
                                             <select class="choices form-select" name="status">
 
                                                 <option value="Aktif">Aktif</option>
-                                                <option value="Berahkir">Berahkir</option>
+                                                <option value="Berakhir">Berahkir</option>
                                             </select>
                                         </div>
                                     </div>

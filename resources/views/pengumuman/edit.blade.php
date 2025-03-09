@@ -24,8 +24,8 @@
                                         <div class="form-group">
                                             <label>1. Judul Pengumuman</label>
                                             <input type="text" id="judul" class="form-control" name="judul_pengumuman" value="{{ old('judul_pengumuman', $pengumuman->judul_pengumuman) }}"
-                                            @error ('judul_pengumuman') is invalid
-                                            @enderror
+                                                @error ('judul_pengumuman') is invalid
+                                                @enderror
                                                 placeholder="Isi Pengumuman" name="judul" value="{{ old('judul') }}">
                                             @error('judul_pengumuman')
                                             <div class="alert alert-danger">{{ $message }}</div>
@@ -44,9 +44,9 @@
                                     <div class="col-md-12 col-12">
                                         <div class="form-group">
                                             <label>3. Link Pengumuman</label>
-                                            <input type="text" id="link_pengumuman" class="form-control" name= "link_pengumuman" value="{{ old('link_pengumuman', $pengumuman->link_pengumuman) }}"
-                                            @error ('link_pengumuman') is invalid
-                                            @enderror
+                                            <input type="text" id="link_pengumuman" class="form-control" name="link_pengumuman" value="{{ old('link_pengumuman', $pengumuman->link_pengumuman) }}"
+                                                @error ('link_pengumuman') is invalid
+                                                @enderror
                                                 placeholder="Link Pengumuman" name="link_pengumuman" value="{{ old('link_pengumuman') }}">
                                             @error('link_pengumuman')
                                             <div class="alert alert-danger">{{ $message }}</div>
@@ -55,14 +55,12 @@
                                     </div>
                                     <div class="col-md-8 col-12">
                                         <div class="form-group">
-                                            <label for="">4. Aksi</label>
+                                            <label for="">4. Status</label>
                                             <select class="choices form-select" name="status">
-
-                                                <option value="Aktif">Aktif</option>
-                                                <option value="Berahkir">Berahkir</option>
+                                                <option value="Aktif" {{ $pengumuman->status === 'Aktif' ? 'selected' : '' }}>Aktif</option>
+                                                <option value="Berakhir" {{ $pengumuman->status === 'Berakhir' ? 'selected' : '' }}>Berakhir</option>
                                             </select>
                                         </div>
-                                    </div>
                                     </div>
                                     <div class="col-12 d-flex justify-content-end">
                                         <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
