@@ -36,7 +36,20 @@
                             <td>{{ $pengumuman->judul_pengumuman }}</td>
                             <td>{{ $pengumuman->link_pengumuman }}</td>
                             <td>{{ $pengumuman->tanggal_pengumuman }}</td>
-                            <td>{{ $pengumuman->status }}</td>
+                            <td>
+                                <form action="{{ route('pengumuman.toggle-status', $pengumuman->id) }}" method="POST" class="d-inline">
+                                    @csrf
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox"
+                                            onChange="this.form.submit()"
+                                            name="status"
+                                            {{ $pengumuman->status === 'Aktif' ? 'checked' : '' }}>
+                                        <label class="form-check-label">
+                                            {{ $pengumuman->status }}
+                                        </label>
+                                    </div>
+                                </form>
+                            </td>
                             <td>
 
                                 <a href="{{ route('pengumuman.edit', $pengumuman->id) }}" class="btn btn-warning btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">

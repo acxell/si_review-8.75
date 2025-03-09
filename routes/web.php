@@ -44,3 +44,4 @@ Route::get('/pengumumans/detail/{pengumuman}', [PengumumanController::class, 'sh
 Route::get('/pengumumans/{pengumuman}', [PengumumanController::class, 'edit'])->name('pengumuman.edit');
 Route::put('/pengumumans/{pengumuman}', [PengumumanController::class, 'update'])->name('pengumuman.update');
 Route::delete('/pengumumans/{pengumuman}', [PengumumanController::class, 'destroy'])->name('pengumuman.destroy');
+Route::post('/pengumuman/{id}/toggle-status', [PengumumanController::class, 'toggleStatus'])->name('pengumuman.toggle-status');

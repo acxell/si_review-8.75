@@ -47,9 +47,9 @@ class PengumumanController extends Controller
         $pengumuman = Pengumuman::create($validateData);
 
         if ($pengumuman) {
-            return redirect()->route('pengumuman.view')->with('success', 'Pengumuman Telah Ditambahkan');
+            return redirect()->route('pengumuman.index')->with('success', 'Pengumuman Telah Ditambahkan');
         } else {
-            return redirect()->route('pengumuman.view')->with('failed', 'Pengumuman Gagal Ditambahkan');
+            return redirect()->route('pengumuman.index')->with('failed', 'Pengumuman Gagal Ditambahkan');
         }
     }
 
@@ -98,6 +98,15 @@ class PengumumanController extends Controller
         } else {
             return redirect()->route('pengumuman.index')->with('failed', 'Pengumuman Gagal Ditambahkan');
         }
+    }
+
+    public function toggleStatus(Request $request, $id)
+    {
+        $pengumuman = Pengumuman::findOrFail($id);
+        $pengumuman->status = $request->has('status') ? 'aktif' : 'berakhir';
+        $pengumuman->save();
+
+        return redirect()->back()->with('success', 'Status berhasil diubah');
     }
 
     /**
