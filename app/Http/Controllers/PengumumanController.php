@@ -40,7 +40,7 @@ class PengumumanController extends Controller
         $validateData = $request->validate([
             'judul_pengumuman' => 'required|string',
             'link_pengumuman' => 'required|string',
-            'tanggal_pengumuman' => 'required|date',
+            'tanggal_pengumuman' => 'required',
             'status' => 'required',
         ]);
 
@@ -94,9 +94,9 @@ class PengumumanController extends Controller
         $pengumuman->update($validateData);
 
         if ($pengumuman) {
-            return redirect()->route('pengumuman.view')->with('success', 'Pengumuman Telah Ditambahkan');
+            return redirect()->route('pengumuman.index')->with('success', 'Pengumuman Telah Ditambahkan');
         } else {
-            return redirect()->route('pengumuman.view')->with('failed', 'Pengumuman Gagal Ditambahkan');
+            return redirect()->route('pengumuman.index')->with('failed', 'Pengumuman Gagal Ditambahkan');
         }
     }
 
@@ -111,9 +111,9 @@ class PengumumanController extends Controller
         $pengumuman->delete();
 
         if ($pengumuman) {
-            return redirect()->route('pengumuman.view')->with('success', 'Pengumuman Berhasil Dihapus');
+            return redirect()->route('pengumuman.index')->with('success', 'Pengumuman Berhasil Dihapus');
         } else {
-            return redirect()->route('pengumuman.view')->with('failed', 'Pengumuman Gagal Dihapus');
+            return redirect()->route('pengumuman.index')->with('failed', 'Pengumuman Gagal Dihapus');
         }
     }
 }
